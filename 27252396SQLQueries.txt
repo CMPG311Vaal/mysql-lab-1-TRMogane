@@ -1,0 +1,351 @@
+C:\Program Files\MySQL\MySQL Server 8.0\bin>mysql -u root -p
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 12
+Server version: 8.0.19 MySQL Community Server - GPL
+
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mydb               |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+7 rows in set (0.02 sec)
+
+mysql> create database BidvestBank;
+Query OK, 1 row affected (0.65 sec)
+
+mysql> use BidvestBank;
+Database changed
+mysql> create table BankBranch(
+    -> branch_name varchar(20),
+    -> branch_city varchar(20),
+    -> assets double);
+Query OK, 0 rows affected (2.22 sec)
+
+mysql> create table Customer(
+    -> customer_name varchar(20),
+    -> customer_street varchar(20),
+    -> customer_city varchar(20));
+Query OK, 0 rows affected (1.21 sec)
+
+mysql> create table CustomerAccount(
+    -> account_number varchar(10) not null primary key,
+    -> branch_name varchar(20),
+    -> balance double);
+Query OK, 0 rows affected (2.75 sec)
+
+mysql> create table Loan(
+    -> loan_number varchar(10) not null primary key,
+    -> branch_name varchar(20),
+    -> amount double);
+Query OK, 0 rows affected (1.74 sec)
+
+mysql> create table Depositor(
+    -> customer_name varchar(30),
+    -> account_number varchar(10));
+Query OK, 0 rows affected (2.61 sec)
+
+mysql> create table Borrower(
+    -> customer_name varchar(30),
+    -> loan_number varchar(10));
+Query OK, 0 rows affected (1.23 sec)
+
+mysql> create table Employee(
+    -> employee_name varchar(30) not null primary key,
+    -> branch_name varchar(20),
+    -> salary double);
+Query OK, 0 rows affected (1.54 sec)
+
+mysql> insert CustomerAccount values(
+    -> 'A-5324', 'Newtown', 500);
+Query OK, 1 row affected (0.25 sec)
+
+mysql> insert CustomerAccount values('A-5624', 'Sunnyside', 400);
+Query OK, 1 row affected (0.27 sec)
+
+mysql>
+mysql> insert CustomerAccount values('A-7794', 'Midrand', 900);
+Query OK, 1 row affected (0.21 sec)
+
+mysql> insert CustomerAccount values('A-4467', 'Mabopane', 700);
+Query OK, 1 row affected (0.16 sec)
+
+mysql> insert CustomerAccount values('A-3546', 'Midrand', 700);
+Query OK, 1 row affected (0.11 sec)
+
+mysql> insert CustomerAccount values('A-3453', 'Universitas', 700);
+Query OK, 1 row affected (0.15 sec)
+
+mysql> insert CustomerAccount values('A-2542', 'Mamelodi', 350);
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert bankbranch values('Newtown','Johannesburg',9000000);
+Query OK, 1 row affected (0.19 sec)
+
+mysql> insert bankbranch values('Mabopane','Pretoria',400000);
+Query OK, 1 row affected (0.17 sec)
+
+mysql> insert bankbranch values('Belgravia','Kimberly',3700000);
+Query OK, 1 row affected (0.14 sec)
+
+mysql> insert bankbranch values('Sunnyside','Pretoria',1700000);
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert bankbranch values('Amanzimtoti','Durban',300000);
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert bankbranch values('Unversitas','Bloemfontein',2100000);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert bankbranch values('Mamelodi','Pretoria',8000000);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert customer values('Modise','Springs','George');
+Query OK, 1 row affected (0.26 sec)
+
+mysql> insert customer values('Brooks','Senator','George');
+Query OK, 1 row affected (0.23 sec)
+
+mysql> insert customer values('Jooste','North','Kimberly');
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert customer values('Lombard','Sand Hill','Nelspruit');
+Query OK, 1 row affected (0.17 sec)
+
+mysql> insert customer values('Mokwena','Walnut','Port-Elizabeth');
+Query OK, 1 row affected (0.11 sec)
+
+mysql> insert customer values('Johnson','Mmabatho','Mafikeng');
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert customer values('Johson','Alma','Bloemfoutein');
+Query OK, 1 row affected (0.16 sec)
+
+mysql> insert customer values('Zwane','Main','Mafikeng');
+Query OK, 1 row affected (0.17 sec)
+
+mysql> insert customer values('Lindsay','Park','George');
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert customer values('Smith','North','Kimberly');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert customer values('Dlamini','Putnam','Port-Elizabeth');
+Query OK, 1 row affected (0.21 sec)
+
+mysql> insert customer values('Williams','Nassau','Giyane');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert depositor values('Johnson', 'A-5654');
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert depositor values('Johson', 'A-5624');
+Query OK, 1 row affected (0.18 sec)
+
+mysql> insert depositor values('Johnson', 'A-5624');
+Query OK, 1 row affected (0.14 sec)
+
+mysql> insert depositor values('Johnson', 'A-5624');
+Query OK, 1 row affected (0.14 sec)
+
+mysql> insert depositor values('Johnson', 'A-7794');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert depositor values('Zwane', 'A-3546');
+Query OK, 1 row affected (0.25 sec)
+
+mysql> insert depositor values('Lindsay', 'A-3453');
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert depositor values('Smith', 'A-4467');
+Query OK, 1 row affected (0.19 sec)
+
+mysql> insert depositor values('Dlamini', 'A-2542');
+Query OK, 1 row affected (0.10 sec)
+
+
+mysql> insert loan values('l-11','mamelodi',900);
+Query OK, 1 row affected (0.28 sec)
+
+mysql> insert loan values('l-14','newtown',1500);
+Query OK, 1 row affected (0.23 sec)
+
+mysql> insert loan values('l-15','sunnyside',1500);
+Query OK, 1 row affected (0.09 sec)
+
+
+mysql> insert bankbranch values('midrand', 'johannesburg',7100000);
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert bankbranch values('newtown', 'johannesburg',9000000);
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert bankbranch values('mabopane', 'pretoria',400000);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert bankbranch values('belgravia', 'kimberly',3700000);
+Query OK, 1 row affected (0.22 sec)
+
+mysql> insert bankbranch values('sunnyside', 'pretoria',1700000);
+Query OK, 1 row affected (0.36 sec)
+
+mysql> insert bankbranch values('amanzimtoti', 'durban',300000);
+Query OK, 1 row affected (0.11 sec)
+
+mysql> insert bankbranch values('Unversitas','Bloemfontein',2100000);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert bankbranch values('Mamelodi','Pretoria',8000000);
+Query OK, 1 row affected (0.11 sec)
+
+mysql> insert loan values('L-16','Sunnyside', 1300);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert loan values('L-17','Newtown', 1000);
+Query OK, 1 row affected (0.16 sec)
+
+mysql> insert loan values('L-23','Universitas', 2000);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert loan values('L-93','Mabopane', 500);
+Query OK, 1 row affected (0.19 sec)
+
+mysql> insert borrower values('Modise','L-16');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert borrower values('jooste','L-93');
+Query OK, 1 row affected (0.17 sec)
+
+mysql> insert borrower values('johnson','L-15');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert borrower values('jackson','L-14');
+Query OK, 1 row affected (0.11 sec)
+
+mysql> insert borrower values('Zwane','L-17');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert borrower values('smith','L-11');
+Query OK, 1 row affected (0.15 sec)
+
+mysql> insert borrower values('smith','L-23');
+Query OK, 1 row affected (0.14 sec)
+
+mysql> insert borrower values('williams','L-17');
+Query OK, 1 row affected (0.14 sec)
+
+mysql> insert employee values('Modise','sunnyside',1500);
+Query OK, 1 row affected (0.11 sec)
+
+mysql> insert employee values('Brown','sunnyside',1300);
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert employee values('Gopal','sunnyside',5300);
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert employee values('Johnson','Newtown',1500);
+Query OK, 1 row affected (0.15 sec)
+
+mysql> insert employee values('Loreena','Newtown',1300);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert employee values('Peterson','Newtown',2500);
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert employee values('Rao','Austin',1500);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert employee values('Sato','Austin',1600);
+Query OK, 1 row affected (0.17 sec)
+
+mysql> select * from customeraccount where balance < 700;
++----------------+-------------+---------+
+| account_number | branch_name | balance |
++----------------+-------------+---------+
+| A-2542         | Mamelodi    |     350 |
+| A-5324         | Newtown     |     500 |
+| A-5624         | Sunnyside   |     400 |
++----------------+-------------+---------+
+3 rows in set (0.05 sec)
+
+mysql> select * from customer where customer_city = 'johannesburg';
+Empty set (0.00 sec)
+
+mysql> select * from employee where salary > 1500 and branch_name != 'newtown';
++---------------+-------------+--------+
+| employee_name | branch_name | salary |
++---------------+-------------+--------+
+| Gopal         | sunnyside   |   5300 |
+| Sato          | Austin      |   1600 |
++---------------+-------------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select AVG(salary) 'avg_salary' from employee;
++------------+
+| avg_salary |
++------------+
+|     2062.5 |
++------------+
+1 row in set (0.02 sec)
+
+mysql> select MAX(assets) from bankbranch;
++-------------+
+| MAX(assets) |
++-------------+
+|     9000000 |
++-------------+
+1 row in set (0.06 sec)
+
+mysql> select * from employee where branch_name ='sunnyside';
++---------------+-------------+--------+
+| employee_name | branch_name | salary |
++---------------+-------------+--------+
+| Brown         | sunnyside   |   1300 |
+| Gopal         | sunnyside   |   5300 |
+| Modise        | sunnyside   |   1500 |
++---------------+-------------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select * from borrower;
++---------------+-------------+
+| customer_name | loan_number |
++---------------+-------------+
+| Modise        | L-16        |
+| jooste        | L-93        |
+| johnson       | L-15        |
+| jackson       | L-14        |
+| Zwane         | L-17        |
+| smith         | L-11        |
+| smith         | L-23        |
+| williams      | L-17        |
++---------------+-------------+
+8 rows in set (0.00 sec)
+
+mysql> select account_number from customeraccount where balance > 900;
+Empty set (0.00 sec)
+
+mysql> select account_number balance from customeraccount  where branch_name = 'newtown' and balance >600;
+Empty set (0.00 sec)
+
+mysql> select branch_name, assets from bankbranch;
++-------------+---------+
+| branch_name | assets  |
++-------------+---------+
+| midrand     | 7100000 |
+| newtown     | 9000000 |
+| mabopane    |  400000 |
+| belgravia   | 3700000 |
+| sunnyside   | 1700000 |
+| amanzimtoti |  300000 |
+| Unversitas  | 2100000 |
+| Mamelodi    | 8000000 |
++-------------+---------+
+8 rows in set (0.00 sec)
