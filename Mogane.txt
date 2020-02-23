@@ -1,3 +1,0 @@
-create database BidvestBank;
-use BivestBank;
-create table BankBranch(branch_name varchar(20), branch_city varchar(20), assets double);
