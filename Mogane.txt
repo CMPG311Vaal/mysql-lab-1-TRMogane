@@ -1,0 +1,2 @@
+mysql> create database BidvestBank;
+mysql> use BivestBank;
